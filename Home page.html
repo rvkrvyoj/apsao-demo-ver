@@ -8,17 +8,54 @@
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
     
     <style>
-        /* 배너 전체화면 */
-        /* Carousel 높이 고정 */
-    .carousel-inner {
-        height: auto; /* 화면 높이 */
+    /* 모든 주요 섹션 높이 통일 */
+    .section-full-height {
+        min-height: 300px; /* 배너 높이 기준으로 조절 */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* 안의 내용 수직 가운데 정렬 */
     }
 
-    /* 이미지 비율 유지 */
+    /* 배너 이미지는 여전히 꽉 채움 */
+    
+    .carousel-inner {
+        height: 600px; /* 동일한 높이 */
+    }
+    .carousel-item {
+        aspect-ratio: 5 / 4; 
+        overflow: hidden;
+    }
     .carousel-item img {
-        height: 100%;
         width: 100%;
-        object-fit: cover;
+        height: 100%;
+        object-fit: cover; /* 사진이 비율 맞게 가운데로 */
+    }
+
+    .carousel-caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    .header-banner {
+        width: 100%;
+        height: 600px; /* 사진 높이 고정 */
+        background-image: url('banner1.png'); /* 사진 경로 */
+        background-size: cover;     /* 꽉 채우기 */
+        background-position: center;/* 가운데 기준 */
+        display: flex;
+        align-items: center;        /* 세로 중앙 */
+        justify-content: center;    /* 가로 중앙 */
+        text-align: center;
+        color: white;
+        position: relative;
+    }
+
+    .header-content {
+        background-color: rgba(0, 0, 0, 0.4); /* 글씨 가독성 배경 */
+        padding: 20px 40px;
+        border-radius: 10px;
     }
 
     /* 작은 화면에서 navbar 색상 유지 */
@@ -157,22 +194,23 @@
     <!-- 배너 -->
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
+
             <!-- 첫 번째 이미지 -->
-            <div class="carousel-item active">
-                <img src="banner1.png" class="d-block w-100" alt="First slide">
-                <div class="carousel-caption d-none d-md-block text-white">
+            <div class="carousel-item active banner-item">
+                <img src="banner1.png" alt="First slide">
+                <div class="carousel-caption banner-caption">
                     <h6>The Asia-Pacific Society for Artificial Organs</h6>
                     <h1 class="fw-bold">APSAO - KTCVS</h1>
-                    <h3>2025 Annual Conference</h3>
-                    <p>NOV 7(Fri) - 8(Sat), 2025</p>
-                    <p>Venue: Main conference room, Chonnam National University Hospital Biomedical Research Institute</p>
+                    <h4>2025 Annual Conference / NOV 7(Fri) - 8(Sat)</h4>
+                    <p>Main conference room, Chonnam National University Hospital Biomedical Research Institute</p>
                     <p>GWANGJU, Republic of KOREA</p>
                 </div>
             </div>
+
             <!-- 두 번째 이미지 -->
-            <div class="carousel-item">
-                <img src="banner2.png" class="d-block w-100" alt="Second slide">
-                <div class="carousel-caption d-none d-md-block text-white">
+            <div class="carousel-item banner-item">
+                <img src="banner2.png" alt="Second slide">
+                <div class="carousel-caption banner-caption">
                     <h6>The Asia-Pacific Society for Artificial Organs</h6>
                     <h1 class="fw-bold">APSAO - KTCVS</h1>
                     <h3>2025 Annual Conference</h3>
@@ -180,14 +218,15 @@
                     <p>Venue: Main conference room, Chonnam National University Hospital Biomedical Research Institute</p>
                     <p>GWANGJU, Republic of KOREA</p>
                 </div>
-            </div>
             </div>
         </div>
     </div>
+    
     <div class="container mt-5">
         <div class="row">
+
     <!-- Notice & Abstracts 섹션 -->
-    <div class="container mt-5">
+    <div class="container mt-5 section-full-height">
         <div class="row">
         <!-- Notice -->
         <div class="col-md-6">
@@ -224,53 +263,112 @@
         </div>
         </div>
     </div>
+    
     <!-- 뉴스 섹션 -->
-    <div class="container mt-5">
+    <div class="container mt-5 section-full-height">
         <h1 class="mb-4 text-center">COMMUNITY</h1>
-        <div class="community-scroll">
-            <!-- 카드 1 -->
-            <div class="card h-100 community-card">
-                <svg aria-label="Card image cap" class="bd-placeholder-img card-img-top" height="180"
-                    preserveAspectRatio="xMidYMid slice" role="img" width="100%"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <rect width="100%" height="100%" fill="#868e96"></rect>
-                </svg>
-                <div class="card-body">
-                    <h5 class="card-title">Card with stretched link</h5>
-                    <p class="card-text">Some quick example text to build on the card title.</p>
-                    <a href="#" class="btn btn-primary stretched-link">Go somewhere</a>
-                </div>
-            </div>
-
-            <!-- 카드 2 -->
-            <div class="card h-100 community-card">
-                <svg aria-label="Card image cap" class="bd-placeholder-img card-img-top" height="180"
-                    preserveAspectRatio="xMidYMid slice" role="img" width="100%"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <rect width="100%" height="100%" fill="#868e96"></rect>
-                </svg>
-                <div class="card-body">
-                    <h5 class="card-title">Another News</h5>
-                    <p class="card-text">This is some example text to demonstrate the second news card.</p>
-                    <a href="#" class="btn btn-primary stretched-link">Read more</a>
-                </div>
-            </div>
-
-            <!-- 카드 3 -->
-            <div class="card h-100 community-card">
-                <svg aria-label="Card image cap" class="bd-placeholder-img card-img-top" height="180"
-                    preserveAspectRatio="xMidYMid slice" role="img" width="100%"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <rect width="100%" height="100%" fill="#868e96"></rect>
-                </svg>
-                <div class="card-body">
-                    <h5 class="card-title">Conference Updates</h5>
-                    <p class="card-text">Details and updates regarding the upcoming conference.</p>
-                    <a href="#" class="btn btn-primary stretched-link">Read more</a>
-                </div>
-            </div>
+        <div id="communityCards" class="community-scroll"></div>
+    
+        <!-- 페이지네이션 -->
+        <nav aria-label="Community page navigation">
+        <ul id="communityPagination" class="pagination justify-content-center mt-4"></ul>
+        </nav>
+    </div>
         </div>
     </div>
 </div>
-</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const newsData = [
+            { title: "Card 1", text: "Some quick example text to build on the card title." },
+            { title: "Card 2", text: "This is some example text to demonstrate the second news card." },
+            { title: "Card 3", text: "Details and updates regarding the upcoming conference." },
+            { title: "Card 4", text: "More information on the latest events and activities." },
+            { title: "Card 5", text: "Another interesting update from the community." },
+            { title: "Card 6", text: "Don't miss out on the important announcements." },
+            { title: "Card 7", text: "Join our upcoming webinars and workshops." },
+            { title: "Card 8", text: "Latest research and publications shared here." },
+            { title: "Card 9", text: "Meet the team behind the organization." }
+        ];
+    
+        const itemsPerPage = 3;
+        const totalPages = Math.ceil(newsData.length / itemsPerPage);
+        const cardsContainer = document.getElementById("communityCards");
+        const paginationContainer = document.getElementById("communityPagination");
+    
+        function renderPage(page) {
+            cardsContainer.innerHTML = "";
+            const start = (page - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const pageItems = newsData.slice(start, end);
+    
+            pageItems.forEach(news => {
+                const card = document.createElement("div");
+                card.className = "card h-100 community-card";
+                card.innerHTML = `
+                    <svg aria-label="Card image cap" class="bd-placeholder-img card-img-top" height="180"
+                        preserveAspectRatio="xMidYMid slice" role="img" width="100%"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" fill="#868e96"></rect>
+                    </svg>
+                    <div class="card-body">
+                        <h5 class="card-title">${news.title}</h5>
+                        <p class="card-text">${news.text}</p>
+                        <a href="#" class="btn btn-primary stretched-link">Read more</a>
+                    </div>
+                `;
+                cardsContainer.appendChild(card);
+            });
+        }
+    
+        function renderPagination() {
+            paginationContainer.innerHTML = "";
+    
+            for (let i = 1; i <= totalPages; i++) {
+                const li = document.createElement("li");
+                li.className = "page-item";
+                li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+                li.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    setActivePage(i);
+                });
+                paginationContainer.appendChild(li);
+            }
+        }
+    
+        function setActivePage(page) {
+            document.querySelectorAll("#communityPagination .page-item").forEach(li => li.classList.remove("active"));
+            paginationContainer.querySelectorAll(".page-item")[page - 1].classList.add("active");
+            renderPage(page);
+        }
+    
+        renderPagination();
+        setActivePage(1);
+    });
+    </script>
 </body>
+
+
+<!-- Footer -->
+<footer class="footer mt-5 py-4" style="background-color: #f8f9fa; border-top: 1px solid #dee2e6;">
+    <div class="container text-center text-md-start">
+        <div class="row">
+            <!-- 왼쪽 로고 및 기관명 -->
+            <div class="col-md-4 mb-3">
+                <h5 class="fw-bold">APSAO 2025</h5>
+                <p class="mb-0">The Asia-Pacific Society for Artificial Organs</p>
+            </div>
+            <!-- 중앙 주소 / 연락처 -->
+            <div class="col-md-4 mb-3">
+                <p class="mb-1"><strong>주소:</strong> 광주광역시 동구 제봉로 42 전남대학교병원 의생명연구원</p>
+                <p class="mb-1"><strong>TEL:</strong> ???</p>
+                <p class="mb-1"><strong>FAX:</strong> ???</p>
+                <p class="mb-0"><strong>E-mail:</strong> ???@gmail.com</p>
+            </div>
+            <!-- 오른쪽 저작권 -->
+            <div class="col-md-4 mb-3 text-md-end text-muted">
+                <p class="mb-0">&copy; 2025 APSAO.데모버전 김률희</p>
+            </div>
+        </div>
+    </div>
+</footer>
